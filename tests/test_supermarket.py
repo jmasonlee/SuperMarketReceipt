@@ -68,6 +68,30 @@ def test_full_receipt_three_for_two():
 
     verify(str(receipt))
 
+def test_full_receipt_two_for_one():
+    apples, teller, toothbrush = create_teller_and_items()
+    teller.add_special_offer(SpecialOfferType.TWO_FOR_AMOUNT, apples, 1)
+
+    cart = ShoppingCart()
+    cart.add_item_quantity(apples, 2.5)
+    cart.add_item_quantity(toothbrush, 1)
+
+    receipt = teller.checks_out_articles_from(cart)
+
+    verify(str(receipt))
+
+def test_full_receipt_two_for_three():
+    apples, teller, toothbrush = create_teller_and_items()
+    teller.add_special_offer(SpecialOfferType.TWO_FOR_AMOUNT, apples, 1)
+
+    cart = ShoppingCart()
+    cart.add_item_quantity(apples, 2.5)
+    cart.add_item_quantity(toothbrush, 1)
+
+    receipt = teller.checks_out_articles_from(cart)
+
+    verify(str(receipt))
+
 
 def create_teller_and_items():
     catalog = FakeCatalog()
