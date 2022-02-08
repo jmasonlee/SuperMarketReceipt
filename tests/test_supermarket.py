@@ -55,6 +55,7 @@ def test_product_quantities_updates():
     receipt = teller.checks_out_articles_from(cart)
     verify(str(cart.product_quantities) + str(receipt))
 
+
 def test_full_receipt_three_for_two():
     apples, teller, toothbrush = create_teller_and_items()
     teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, toothbrush, "foor")
