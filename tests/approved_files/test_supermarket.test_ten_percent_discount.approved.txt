@@ -1,0 +1,13 @@
+
+            Receipt:
+            
+            Items:[apples  ProductUnit.KILO 2.5 1.99 4.975, toothbrush  ProductUnit.EACH 1 0.99 0.99]
+   
+            
+            Discounts:[self.product=toothbrush  ProductUnit.EACH self.description='10.0% off' self.discount_amount=-0.099]
+   
+            
+            Total:5.866
+   
+        
+        

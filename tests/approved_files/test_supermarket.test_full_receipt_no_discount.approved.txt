@@ -1,0 +1,13 @@
+
+            Receipt:
+            
+            Items:[apples  ProductUnit.KILO 2.5 1.99 4.975, toothbrush  ProductUnit.EACH 1 0.99 0.99]
+   
+            
+            Discounts:[]
+   
+            
+            Total:5.965
+   
+        
+        
