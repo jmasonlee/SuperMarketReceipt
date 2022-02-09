@@ -22,5 +22,21 @@ def test_item_not_in_catalog():
         teller.common_code(cart)
     verify(exception)
 
+
+def test_checkout_everything_in_the_catalog():
+    catalog = FakeCatalog()
+    toothbrush = Product("toothbrush", ProductUnit.EACH)
+    apple = Product("apple", ProductUnit.KILO)
+    catalog.add_product(toothbrush, 2.00)
+    catalog.add_product(apple, 1.50)
+
+    teller = Teller(catalog)
+
+    cart = ShoppingCart()
+    cart.add_item(toothbrush)
+    cart.add_item(apple)
+
+    verify(teller.common_code(cart))
+
 #catalog with toothbrush and apples, checkout toothbrush and apples
 #catalog with toothbrush and apples, checkout apples
