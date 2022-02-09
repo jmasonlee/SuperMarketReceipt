@@ -9,7 +9,7 @@ from tests.fake_catalog import FakeCatalog
 
 def test_common_code_empty_catalog():
     teller = Teller(FakeCatalog())
-    verify(teller.common_code(ShoppingCart()))
+    verify(teller.calculate_total_charges(ShoppingCart()))
 
 
 def test_item_not_in_catalog():
@@ -19,7 +19,7 @@ def test_item_not_in_catalog():
     cart.add_item(Product("toothbrush", ProductUnit.EACH))
 
     with pytest.raises(KeyError) as exception:
-        teller.common_code(cart)
+        teller.calculate_total_charges(cart)
     verify(exception)
 
 
@@ -36,7 +36,7 @@ def test_checkout_everything_in_the_catalog():
     cart.add_item(toothbrush)
     cart.add_item(apple)
 
-    verify(teller.common_code(cart))
+    verify(teller.calculate_total_charges(cart))
 
 
 def test_checkout_one_item_from_catalog():
@@ -51,4 +51,4 @@ def test_checkout_one_item_from_catalog():
     cart = ShoppingCart()
     cart.add_item(toothbrush)
 
-    verify(teller.common_code(cart))
+    verify(teller.calculate_total_charges(cart))
