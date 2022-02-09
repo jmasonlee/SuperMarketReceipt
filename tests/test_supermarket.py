@@ -132,7 +132,6 @@ def test_full_receipt_three_for_two_more_than_two_items():
 
     verify(str(receipt))
 
-#offer.offer_type == SpecialOfferType.FIVE_FOR_AMOUNT and quantity_as_int >= 5
 
 def test_full_receipt_five_for_amount_less_than_five_items():
     apples, teller, toothbrush = create_teller_and_items()
