@@ -12,6 +12,7 @@ class Teller:
         self.offers[product] = Offer(offer_type, product, argument)
 
     def checks_out_articles_from(self, the_cart):
+        #Begin Common Code
         receipt = Receipt()
         product_quantities = the_cart.items
         for pq in product_quantities:
@@ -21,6 +22,7 @@ class Teller:
             price = quantity * unit_price
             #price = 0.00 #quantity * unit_price
             receipt.add_product(p, quantity, unit_price, price)
+        #End Common Code Note: handle_offers could also contain common code
 
         the_cart.handle_offers(receipt, self.offers, self.catalog)
 
