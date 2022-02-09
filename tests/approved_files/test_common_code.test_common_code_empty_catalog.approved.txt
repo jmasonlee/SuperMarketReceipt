@@ -1,0 +1,13 @@
+
+            Receipt:
+            
+            Items:[]
+   
+            
+            Discounts:[]
+   
+            
+            Total:0
+   
+        
+        
