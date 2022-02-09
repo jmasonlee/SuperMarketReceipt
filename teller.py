@@ -11,11 +11,13 @@ class Teller:
     def add_special_offer(self, offer_type, product, argument):
         self.offers[product] = Offer(offer_type, product, argument)
 
-    def checks_out_articles_from(self, the_cart, receipt=Receipt()):
+    def checks_out_articles_from(self, the_cart, receipt=None):
         #Begin Common Code
         # receipt = self.calculate_total_charges(the_cart)
         assert receipt is not None
+        assert receipt.items == the_cart.items
         ### EXIT CRITERION: receipt is not present
+        ### EXIT CRITERION: receipt needs to have values for the items being purchased
         #End Common Code Note: handle_offers could also contain common code
 
         the_cart.handle_offers(receipt, self.offers, self.catalog)
