@@ -97,12 +97,50 @@ def test_full_receipt_two_for_three():
 
 def test_full_receipt_two_for_one_one_item():
     apples, teller, toothbrush = create_teller_and_items()
-    teller.add_special_offer(SpecialOfferType.TWO_FOR_AMOUNT, apples, 3)
+    teller.add_special_offer(SpecialOfferType.TWO_FOR_AMOUNT, apples, 1)
 
     cart = ShoppingCart()
-    cart.add_item_quantity(apples, 2.5)
+    cart.add_item_quantity(apples, 1)
     cart.add_item_quantity(toothbrush, 1)
 
+    receipt = teller.checks_out_articles_from(cart)
+
+    verify(str(receipt))
+
+
+def test_full_receipt_five_for_one():
+    apples, teller, toothbrush = create_teller_and_items()
+    teller.add_special_offer(SpecialOfferType.FIVE_FOR_AMOUNT, apples, 1)
+
+    cart = ShoppingCart()
+    cart.add_item_quantity(apples, 5)
+    cart.add_item_quantity(toothbrush, 1)
+
+    receipt = teller.checks_out_articles_from(cart)
+
+    verify(str(receipt))
+
+
+def test_full_receipt_three_for_two_more_than_two_items():
+    apples, teller, toothbrush = create_teller_and_items()
+    teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, apples, "foo")
+
+    cart = ShoppingCart()
+    cart.add_item_quantity(apples, 3)
+    cart.add_item_quantity(toothbrush, 1)
+    receipt = teller.checks_out_articles_from(cart)
+
+    verify(str(receipt))
+
+#offer.offer_type == SpecialOfferType.FIVE_FOR_AMOUNT and quantity_as_int >= 5
+
+def test_full_receipt_five_for_amount_less_than_five_items():
+    apples, teller, toothbrush = create_teller_and_items()
+    teller.add_special_offer(SpecialOfferType.FIVE_FOR_AMOUNT, apples, "foo")
+
+    cart = ShoppingCart()
+    cart.add_item_quantity(apples, 3)
+    cart.add_item_quantity(toothbrush, 1)
     receipt = teller.checks_out_articles_from(cart)
 
     verify(str(receipt))
