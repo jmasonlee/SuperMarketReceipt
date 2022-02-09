@@ -38,5 +38,17 @@ def test_checkout_everything_in_the_catalog():
 
     verify(teller.common_code(cart))
 
-#catalog with toothbrush and apples, checkout toothbrush and apples
-#catalog with toothbrush and apples, checkout apples
+
+def test_checkout_one_item_from_catalog():
+    catalog = FakeCatalog()
+    toothbrush = Product("toothbrush", ProductUnit.EACH)
+    apple = Product("apple", ProductUnit.KILO)
+    catalog.add_product(toothbrush, 2.00)
+    catalog.add_product(apple, 1.50)
+
+    teller = Teller(catalog)
+
+    cart = ShoppingCart()
+    cart.add_item(toothbrush)
+
+    verify(teller.common_code(cart))
