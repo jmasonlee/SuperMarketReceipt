@@ -14,6 +14,7 @@ class Teller:
     def checks_out_articles_from(self, the_cart):
         #Begin Common Code
         # receipt = self.calculate_total_charges(the_cart)
+        assert receipt is not None
         ### EXIT CRITERION: receipt is not present
         #End Common Code Note: handle_offers could also contain common code
 
