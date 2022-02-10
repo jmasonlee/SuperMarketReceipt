@@ -82,7 +82,11 @@ def test_full_receipt_three_for_two():
     cart.add_item_quantity(apples, 2.5)
     cart.add_item_quantity(toothbrush, 1)
 
-    receipt = teller.checks_out_articles_from(cart)
+    receipt = Receipt()
+    receipt.add_product(apples, 2.5, 1.99, 4.975)
+    receipt.add_product(toothbrush, 1, 0.99, 0.99)
+
+    receipt = teller.checks_out_articles_from(cart, receipt)
 
     verify(str(receipt))
 
