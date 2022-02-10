@@ -13,7 +13,7 @@ class Teller:
 
     def checks_out_articles_from(self, the_cart, receipt=None):
         #Begin Common Code
-        # receipt = self.calculate_total_charges(the_cart)
+        receipt = self.calculate_total_charges(the_cart)
         assert receipt is not None
 
         expected_receipt = Receipt()
