@@ -48,7 +48,11 @@ def test_full_receipt_add_item_adds_one_item():
     cart.add_item(apples)
     cart.add_item(toothbrush)
 
-    receipt = teller.checks_out_articles_from(cart)
+    receipt = Receipt()
+    receipt.add_product(apples, 1.0, 1.99, 1.99)
+    receipt.add_product(toothbrush, 1.0, 0.99, 0.99)
+
+    receipt = teller.checks_out_articles_from(cart, receipt)
 
     verify(str(receipt))
 
