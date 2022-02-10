@@ -65,7 +65,12 @@ def test_product_quantities_updates():
     cart.add_item_quantity(toothbrush, 2.0)
     cart.add_item(toothbrush)
 
-    receipt = teller.checks_out_articles_from(cart)
+    receipt = Receipt()
+    receipt.add_product(apples, 1.0, 1.99, 1.99)
+    receipt.add_product(toothbrush, 2.0, 0.99, 1.98)
+    receipt.add_product(toothbrush, 1.0, 0.99, 0.99)
+
+    receipt = teller.checks_out_articles_from(cart, receipt)
     verify(str(cart.product_quantities) + str(receipt))
 
 
