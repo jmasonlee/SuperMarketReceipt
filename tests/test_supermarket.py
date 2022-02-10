@@ -178,7 +178,12 @@ def test_full_receipt_five_for_amount_less_than_five_items():
     cart = ShoppingCart()
     cart.add_item_quantity(apples, 3)
     cart.add_item_quantity(toothbrush, 1)
-    receipt = teller.checks_out_articles_from(cart)
+
+    receipt = Receipt()
+    receipt.add_product(apples, 3, 1.99, 5.97)
+    receipt.add_product(toothbrush, 1, 0.99, 0.99)
+
+    receipt = teller.checks_out_articles_from(cart, receipt)
 
     verify(str(receipt))
 
