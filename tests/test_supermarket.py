@@ -142,7 +142,11 @@ def test_full_receipt_five_for_one():
     cart.add_item_quantity(apples, 5)
     cart.add_item_quantity(toothbrush, 1)
 
-    receipt = teller.checks_out_articles_from(cart)
+    receipt = Receipt()
+    receipt.add_product(apples, 5, 1.99, 9.95)
+    receipt.add_product(toothbrush, 1, 0.99, 0.99)
+
+    receipt = teller.checks_out_articles_from(cart, receipt)
 
     verify(str(receipt))
 
