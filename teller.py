@@ -12,11 +12,6 @@ class Teller:
         self.offers[product] = Offer(offer_type, product, argument)
 
     def checks_out_articles_from(self, the_cart, receipt=None):
-        #Begin Common Code
-        ### EXIT CRITERION: receipt is not present
-        ### EXIT CRITERION: receipt needs to have values for the items being purchased
-        #End Common Code Note: handle_offers could also contain common code
-
         the_cart.handle_offers(receipt, self.offers, self.catalog)
 
         return receipt
