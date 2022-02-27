@@ -9,8 +9,8 @@ from tests.fake_catalog import FakeCatalog
 
 def test_common_code_empty_catalog():
     teller = Teller(FakeCatalog())
-    charges = teller.calculate_total_charges(ShoppingCart())
-    verify(charges)
+    receipt = teller.calculate_total_charges(ShoppingCart())
+    verify(receipt)
 
 
 def test_item_not_in_catalog():
@@ -37,8 +37,8 @@ def test_checkout_everything_in_the_catalog():
     cart.add_item(toothbrush)
     cart.add_item(apple)
 
-    charges = teller.calculate_total_charges(cart)
-    verify(charges)
+    receipt = teller.calculate_total_charges(cart)
+    verify(receipt)
 
 
 
