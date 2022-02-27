@@ -1,0 +1,13 @@
+
+            Receipt:
+            
+            Items:[toothbrush  ProductUnit.EACH 1.0 2.0 0.0, apple  ProductUnit.KILO 1.0 1.5 0.0]
+   
+            
+            Discounts:[]
+   
+            
+            Total:0.0
+   
+        
+        

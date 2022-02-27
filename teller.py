@@ -24,6 +24,6 @@ class Teller:
             quantity = pq.quantity
             unit_price = self.catalog.unit_price(p)
             price = quantity * unit_price
-            # price = 0.00 #quantity * unit_price
+            price = 0.00
             receipt.add_product(p, quantity, unit_price, price)
         return receipt
