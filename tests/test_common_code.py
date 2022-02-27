@@ -6,12 +6,21 @@ from shopping_cart import ShoppingCart
 from teller import Teller
 from tests.fake_catalog import FakeCatalog
 
+from python.receipt import Receipt
+
 
 def test_common_code_empty_catalog():
     teller = Teller(FakeCatalog())
-    receipt = teller.calculate_total_charges(ShoppingCart())
+    cart = ShoppingCart()
+    receipt = teller.calculate_total_charges(cart)
     verify(receipt)
+    assert receipt is not None
 
+    expected_receipt = Receipt()
+    for item in cart.items:
+        expected_receipt.add_product(item.product, item.quantity, teller.catalog.unit_price(item.product),
+                                     item.quantity * teller.catalog.unit_price(item.product))
+    assert str(receipt.items) == str(expected_receipt.items)
 
 def test_item_not_in_catalog():
     teller = Teller(FakeCatalog())
@@ -22,6 +31,7 @@ def test_item_not_in_catalog():
     with pytest.raises(KeyError) as exception:
         teller.calculate_total_charges(cart)
     verify(exception)
+
 
 
 def test_checkout_everything_in_the_catalog():
@@ -39,6 +49,13 @@ def test_checkout_everything_in_the_catalog():
 
     receipt = teller.calculate_total_charges(cart)
     verify(receipt)
+    assert receipt is not None
+
+    expected_receipt = Receipt()
+    for item in cart.items:
+        expected_receipt.add_product(item.product, item.quantity, teller.catalog.unit_price(item.product),
+                                     item.quantity * teller.catalog.unit_price(item.product))
+    assert str(receipt.items) == str(expected_receipt.items)
 
 
 
@@ -56,3 +73,11 @@ def test_checkout_one_item_from_catalog():
 
     receipt = teller.calculate_total_charges(cart)
     verify(receipt)
+
+    assert receipt is not None
+
+    expected_receipt = Receipt()
+    for item in cart.items:
+        expected_receipt.add_product(item.product, item.quantity, teller.catalog.unit_price(item.product),
+                                     item.quantity * teller.catalog.unit_price(item.product))
+    assert str(receipt.items) == str(expected_receipt.items)

@@ -14,12 +14,6 @@ class Teller:
     def checks_out_articles_from(self, the_cart, receipt=None):
         #Begin Common Code
         receipt = self.calculate_total_charges(the_cart)
-        assert receipt is not None
-
-        expected_receipt = Receipt()
-        for item in the_cart.items:
-            expected_receipt.add_product(item.product, item.quantity, self.catalog.unit_price(item.product), item.quantity * self.catalog.unit_price(item.product))
-        assert str(receipt.items) == str(expected_receipt.items)
         ### EXIT CRITERION: receipt is not present
         ### EXIT CRITERION: receipt needs to have values for the items being purchased
         #End Common Code Note: handle_offers could also contain common code
