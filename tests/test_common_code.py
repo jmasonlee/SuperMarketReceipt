@@ -54,5 +54,5 @@ def test_checkout_one_item_from_catalog():
     cart = ShoppingCart()
     cart.add_item(toothbrush)
 
-    charges = teller.calculate_total_charges(cart)
-    verify(charges)
+    receipt = teller.calculate_total_charges(cart)
+    verify(receipt)
