@@ -13,7 +13,6 @@ class Teller:
 
     def checks_out_articles_from(self, the_cart, receipt=None):
         #Begin Common Code
-        receipt = self.calculate_total_charges(the_cart)
         ### EXIT CRITERION: receipt is not present
         ### EXIT CRITERION: receipt needs to have values for the items being purchased
         #End Common Code Note: handle_offers could also contain common code
